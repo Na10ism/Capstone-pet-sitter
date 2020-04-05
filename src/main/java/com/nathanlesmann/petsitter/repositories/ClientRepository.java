@@ -9,4 +9,7 @@ public interface ClientRepository extends CrudRepository<Client, Integer> {
 
     @Query("select s from Address s where address_id= :address_id ")
     Address getAddress(int address_id);
+
+
+
 }

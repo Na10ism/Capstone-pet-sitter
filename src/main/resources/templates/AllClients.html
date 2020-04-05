@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="styleSheet.css" rel="stylesheet"/>
+    <title>Clients</title>
+</head>
+
+<body>
+
+
+<div class="container">
+
+    <h3>Clients</h3>
+    <hr>
+
+    <!-- Add a button -->
+    <a th:href="@{/clients/addClient}"
+       class="btn btn-primary btn-sm mb-3">
+        Add Client
+    </a>
+
+
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Phone Number</th>
+            <th>Email</th>
+            <th>Address</th>
+
+
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="tempClient : ${clients}">
+
+            <td th:text="${tempClient.client_first_name}"></td>
+            <td th:text="${tempClient.client_last_name}"></td>
+            <td th:text="${tempClient.client_phone_number}"></td>
+            <td th:text="${tempClient.client_email}"></td>
+            <td th:text="${tempClient.address_id}"></td>
+            <td th:text="${tempClient.pets}"></td>
+
+
+        </tr>
+
+
+        </tbody>
+    </table>
+
+</div>
+
+<p>Stylesheet works</p>
+
+</body>
+</html>

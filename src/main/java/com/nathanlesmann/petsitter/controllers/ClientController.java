@@ -3,30 +3,53 @@ package com.nathanlesmann.petsitter.controllers;
 import com.nathanlesmann.petsitter.entities.Address;
 import com.nathanlesmann.petsitter.entities.Client;
 import com.nathanlesmann.petsitter.services.ClientService;
+import com.nathanlesmann.petsitter.services.PetService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
-@RestController
+@Controller
 public class ClientController {
 
     @Autowired
     private ClientService clientService;
 
-    @RequestMapping(value = "/clients")
-    public List<Client> getAllClients()
-    {
+    @Autowired
+    private PetService petService;
 
-        return clientService.getAllClients();
+    @RequestMapping(value = "/clients")
+    public String getAllClients(Model model)
+    {
+        List<Client> theClients = clientService.getAllClients();
+
+        model.addAttribute("clients", theClients);
+
+        return "AllClients";
     }
 
 
-    @RequestMapping(value = "/clients/{id}")
+    @RequestMapping(value = "/api/clients/{id}")
     public Optional<Client> getClientById(@PathVariable int id) {
 
         return clientService.getClient(id);
+    }
+
+    @RequestMapping(value = "/clients/{id}")
+    public String getClientById(@PathVariable int id, Model model) {
+
+//        Optional<Client> theClient= clientService.getClient(id);
+
+
+        model.addAttribute("client", clientService.getClient(id).orElse(null));
+
+        model.addAttribute("address", clientService.getAddress(id));
+
+
+        return "singleClient";
     }
 
 
@@ -37,6 +60,8 @@ public class ClientController {
         Address address = clientService.getAddress(address_id);
 
         client.setAddress_id(address);
+
+//        petService.getAllPets().forEach(client.setPets(););
 
         clientService.addClient(client);
 
