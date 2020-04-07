@@ -4,6 +4,7 @@ import com.nathanlesmann.petsitter.entities.Client;
 import com.nathanlesmann.petsitter.entities.Pet;
 import com.nathanlesmann.petsitter.repositories.PetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -43,5 +44,9 @@ public class PetService {
 
     public void deletePet(int id) {
         petRepository.deleteById(id);
+    }
+
+    public List<Pet> getAllPetsByClientId(int client_id) {
+        return petRepository.getAllPetsByClientId(client_id);
     }
 }

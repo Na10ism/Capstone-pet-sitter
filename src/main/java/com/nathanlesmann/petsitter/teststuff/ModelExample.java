@@ -13,12 +13,14 @@ import org.springframework.web.bind.annotation.RestController;
 public class ModelExample {
 
     @RequestMapping(value="/")
-    public String hello(Model model){
+    public String hello(){
 
+        int one = 1;
 
-        model.addAttribute("theDate", new java.util.Date());
-        return "test";
+        return "clients/${one}";
     }
+
+
 
 
 }

@@ -57,13 +57,19 @@ public class Pet {
         this.pet_name = pet_name;
     }
 
-    public Client getClient_id() {
+    public Client getClient() {
         return client;
     }
 
-    public void setClient_id(Client client_id) {
+    public void setClient(Client client_id) {
         this.client = client_id;
     }
+
+    public int getClient_id(){
+        return client.getClient_id();
+    }
+
+
 
     @Override
     public String toString() {
