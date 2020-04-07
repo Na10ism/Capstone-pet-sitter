@@ -1,12 +1,10 @@
 package com.nathanlesmann.petsitter.controllers;
 
+import com.nathanlesmann.petsitter.entities.Client;
 import com.nathanlesmann.petsitter.entities.Pet;
 import com.nathanlesmann.petsitter.services.PetService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,4 +29,13 @@ public class PetController {
     }
 
 
+    @PostMapping("/pets/save")
+    public String saveClient(@ModelAttribute("pet") Pet thePet) {
+
+        // save the employee
+        petService.addPet(thePet);
+
+        // use a redirect to prevent duplicate submissions
+        return "redirect:/address/showFormForAddress";
+    }
 }
