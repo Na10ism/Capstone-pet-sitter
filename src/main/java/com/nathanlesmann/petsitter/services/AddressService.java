@@ -41,4 +41,8 @@ public class AddressService {
         addressRepository.deleteById(id);
     }
 
+    public void saveAddress(Address address) {
+        addressRepository.save(address);
+    }
+
 }

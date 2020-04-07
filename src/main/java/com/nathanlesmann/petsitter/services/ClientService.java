@@ -29,16 +29,7 @@ public class ClientService {
 
         return clients;
     }
-//
-//    @Query("Select s from pet where client_id= :client_id")
-//    public List<Pet> getAllPetsByClientId(Client client_id){
-//
-//        List<Pet> pets = new ArrayList<>();
-//
-//
-//
-//    }
-//    public List<Pet> getAllPets
+
 
     public void addClient(Client client) {
         clientRepository.save(client);
@@ -53,6 +44,10 @@ public class ClientService {
     }
 
     public void updateClient(int id, Client client) {
+        clientRepository.save(client);
+    }
+
+    public void saveClient(Client client) {
         clientRepository.save(client);
     }
 

@@ -28,7 +28,18 @@ public class ClientController {
 
         model.addAttribute("clients", theClients);
 
-        return "AllClients";
+        return "clients/AllClients";
+    }
+
+    @RequestMapping(value="/clients/showFormForAdd")
+    public String showFormForAdd(Model model){
+
+        // create model attribute to bind the form data
+        Client client = new Client();
+
+        model.addAttribute("client", client);
+
+        return "clients/clientForm";
     }
 
 
@@ -43,13 +54,19 @@ public class ClientController {
 
 //        Optional<Client> theClient= clientService.getClient(id);
 
+        Client client = clientService.getClient(id).orElse(null);
 
-        model.addAttribute("client", clientService.getClient(id).orElse(null));
+        model.addAttribute("client", client);
 
         model.addAttribute("address", clientService.getAddress(id));
 
 
-        return "singleClient";
+        assert client != null;
+        //create getAllPetsByClientId
+        model.addAttribute("pets", petService.getAllPetsByClientId(client.getClient_id()));
+
+
+        return "clients/singleClient";
     }
 
 
@@ -78,6 +95,16 @@ public class ClientController {
     public void deleteClient(@PathVariable int id) {
         clientService.deleteClient(id);
 
+    }
+
+    @PostMapping("/clients/save")
+    public String saveClient(@ModelAttribute("client") Client theClient) {
+
+        // save the employee
+        clientService.saveClient(theClient);
+
+        // use a redirect to prevent duplicate submissions
+        return "redirect:/address/showFormForAddress";
     }
 }
 
