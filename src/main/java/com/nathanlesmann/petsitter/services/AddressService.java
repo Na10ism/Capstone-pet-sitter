@@ -25,11 +25,12 @@ public class AddressService {
         return Addresses;
     }
 
+
     public Optional<Address> getAddress(int id) {
         return addressRepository.findById(id);
     }
 
-    public void updateAddress(int id, Address Address) {
+    public void updateAddressById(int id, Address Address) {
         addressRepository.save(Address);
     }
 
