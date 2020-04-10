@@ -26,7 +26,7 @@ public class AddressService {
     }
 
 
-    public Optional<Address> getAddress(int id) {
+    public Optional<Address> getAddressById(int id) {
         return addressRepository.findById(id);
     }
 

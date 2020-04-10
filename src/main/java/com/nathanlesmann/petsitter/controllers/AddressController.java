@@ -30,7 +30,7 @@ public class AddressController {
 
     @RequestMapping(value = "/address/{id}")
     public Optional<Address> getAddress(@PathVariable int id) {
-        return addressService.getAddress(id);
+        return addressService.getAddressById(id);
     }
 
 
@@ -71,7 +71,7 @@ public class AddressController {
 
         addressService.saveAddress(theAddress);
 
-        Address address = clientService.getAddress(theAddress.getAddress_id());
+        Address address = clientService.getAddressById(theAddress.getAddress_id());
 
         Client client = clientService.getClientById(client_id).orElse(null);
 

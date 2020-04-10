@@ -46,7 +46,7 @@ public class ClientController {
         model.addAttribute("client", client);
 
         assert client != null;
-        model.addAttribute("address", clientService.getAddress(client.getIdFromAddress_id()));
+        model.addAttribute("address", clientService.getAddressById(client.getIdFromAddress_id()));
 
 
         //create getAllPetsByClientId

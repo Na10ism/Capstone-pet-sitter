@@ -35,7 +35,7 @@ public class ClientService {
         clientRepository.save(client);
     }
 
-    public Address getAddress(int id) {
+    public Address getAddressById(int id) {
         return clientRepository.getAddress(id);
     }
 

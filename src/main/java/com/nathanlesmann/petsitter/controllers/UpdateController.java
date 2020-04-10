@@ -11,7 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@Controller(value = "/update")
+
+@Controller
 public class UpdateController {
 
     @Autowired
@@ -32,23 +33,48 @@ public class UpdateController {
 
         model.addAttribute("client", client);
 
-        return "update/updateClient";
+        return "update/updateClientForm";
 
     }
 
     @RequestMapping(value = "/saveClient/{client_id}")
-    public String saveUpdatedClient(@PathVariable int client_id) {
+    public String saveUpdatedClient(@PathVariable int client_id, Model model) {
         Client client = clientService.getClientById(client_id).orElse(null);
 
         clientService.updateClientById(client_id, client);
 
-        return "update/updateAddress";
+        model.addAttribute("client", client);
+
+        return "update/updateAddress" + client_id;
     }
 
-    @RequestMapping(value = "/updateAddress/{address_id}")
-    public void updateAddressForm(@PathVariable int address_id, Model model) {
+    @RequestMapping(value = "/updateAddress/{client_id}")
+    public String updateAddressForm(@PathVariable int client_id, Model model) {
 
-        Address address = addressService.getAddress(address_id).orElse(null);
-        addressService.updateAddress(address_id, address);
+        Client client = clientService.getClientById(client_id).orElse(null);
+
+        assert client != null;
+        Address address = client.getAddress_id();
+
+        model.addAttribute("address", address);
+        model.addAttribute("client_id", client_id);
+
+        return "update/updateAddressForm";
+    }
+
+    @RequestMapping(value = "/saveAddress/{client_id}")
+    public String saveUpdatedAddress(@PathVariable int client_id) {
+
+        Client client = clientService.getClientById(client_id).orElse(null);
+
+        assert client != null;
+        Address address = addressService.getAddressById(
+                client.getIdFromAddress_id()).orElse(null);
+
+        assert address != null;
+        addressService.updateAddressById(address.getAddress_id(), address);
+
+
+        return "clients/";
     }
 }
