@@ -10,23 +10,22 @@
 
 <body>
 
-<div>
+
     <h3>Create Client</h3>
     <hr>
+    <div>
+        <p>Client Information</p>
 
-    <p>Save Client</p>
+        <form action="#" th:action="@{/address/showFormForAddress}"
+            th:object="${client}" method="POST">
 
-    <form action="#" th:action="@{/clients/save}"
-          th:object="${client}" method="POST">
+            <input type="text" th:field="*{client_first_name}" placeholder="First Name">
+            <input type="text" th:field="*{client_last_name}" placeholder="Last Name">
+            <input type="text" th:field="*{client_phone_number}" placeholder="Phone Number">
+            <input type="text" th:field="*{client_email}" placeholder="Email">
+            <button type="submit">Save</button>
 
-        <input type="text" th:field="*{client_first_name}" placeholder="First Name">
-        <input type="text" th:field="*{client_last_name}" placeholder="Last Name">
-        <input type="text" th:field="*{client_phone_number}" placeholder="Phone Number">
-        <input type="text" th:field="*{client_email}" placeholder="Email">
-
-        <button type="submit">Save</button>
-
-    </form>
+        </form>
 </div>
 
 

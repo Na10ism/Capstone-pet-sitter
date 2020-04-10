@@ -39,17 +39,14 @@ public class ClientService {
         return clientRepository.getAddress(id);
     }
 
-    public Optional<Client> getClient(int id) {
+    public Optional<Client> getClientById(int id) {
         return clientRepository.findById(id);
     }
 
-    public void updateClient(int id, Client client) {
+    public void updateClientById(int id, Client client) {
         clientRepository.save(client);
     }
 
-    public void saveClient(Client client) {
-        clientRepository.save(client);
-    }
 
     public void deleteClient(int id) {
         clientRepository.deleteById(id);

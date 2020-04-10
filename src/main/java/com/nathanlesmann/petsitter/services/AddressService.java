@@ -25,10 +25,6 @@ public class AddressService {
         return Addresses;
     }
 
-    public void addAddress(Address Address) {
-        addressRepository.save(Address);
-    }
-
     public Optional<Address> getAddress(int id) {
         return addressRepository.findById(id);
     }

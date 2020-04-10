@@ -13,7 +13,7 @@ import javax.persistence.*;
 public class Pet {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int pet_id;
 
     private String pet_type;

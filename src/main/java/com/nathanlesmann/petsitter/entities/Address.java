@@ -30,7 +30,7 @@ public class Address {
 //    public Client getClient_id() {
 //        return client_id;
 //    }
-//
+
 //    public void setClient_id(Client client_id) {
 //        this.client_id = client_id;
 //    }
