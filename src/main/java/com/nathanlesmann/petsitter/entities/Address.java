@@ -30,7 +30,7 @@ public class Address {
 //    public Client getClient_id() {
 //        return client_id;
 //    }
-//
+
 //    public void setClient_id(Client client_id) {
 //        this.client_id = client_id;
 //    }
@@ -77,12 +77,6 @@ public class Address {
 
     @Override
     public String toString() {
-        return "Address{" +
-                "address_id=" + address_id +
-                ", street_address='" + street_address + '\'' +
-                ", city='" + city + '\'' +
-                ", state='" + state + '\'' +
-                ", zipcode='" + zipcode + '\'' +
-                '}';
+        return city + ", " + state;
     }
 }

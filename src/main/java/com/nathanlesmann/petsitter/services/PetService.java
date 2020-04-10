@@ -38,7 +38,7 @@ public class PetService {
         return petRepository.findById(id);
     }
 
-    public void updatePet(int id, Pet pet) {
+    public void updateOrAddPet(Pet pet) {
         petRepository.save(pet);
     }
 
@@ -49,4 +49,6 @@ public class PetService {
     public List<Pet> getAllPetsByClientId(int client_id) {
         return petRepository.getAllPetsByClientId(client_id);
     }
+
+
 }

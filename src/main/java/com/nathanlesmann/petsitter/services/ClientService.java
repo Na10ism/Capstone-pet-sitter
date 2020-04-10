@@ -47,9 +47,6 @@ public class ClientService {
         clientRepository.save(client);
     }
 
-    public void saveClient(Client client) {
-        clientRepository.save(client);
-    }
 
     public void deleteClient(int id) {
         clientRepository.deleteById(id);

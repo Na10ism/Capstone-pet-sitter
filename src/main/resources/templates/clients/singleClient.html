@@ -23,6 +23,11 @@
         Update Client
     </a>
 
+    <a th:href="@{/pet/showFormForPet} + ${client.client_id}"
+       class="btn btn-primary btn-sm mb-3">
+        Add Pet
+    </a>
+
 
     <table class="table table-bordered table-striped">
         <thead class="thead-dark">
@@ -50,6 +55,8 @@
 </div>
 
 <p><strong>Street Name</strong></p>
+<p th:text="${address.address_id}"></p>
+
 <p th:text="${address.street_address}"></p>
 <p th:text="${address.city}"></p>
 <p th:text="${address.state}"></p>

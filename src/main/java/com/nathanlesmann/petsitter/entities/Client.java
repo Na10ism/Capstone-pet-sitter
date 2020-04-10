@@ -34,8 +34,10 @@ public class Client {
     private List<Pet> pets = new ArrayList<>();
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "client_id")
+    @JoinColumn(name = "address_id")
     private Address address_id;
+
+
 
     public Client(){
 
@@ -61,9 +63,13 @@ public class Client {
 //        }
     }
 
+    public int getIdFromAddress_id() {
+        return address_id.getAddress_id();
+    }
     public Address getAddress_id() {
         return address_id;
     }
+
 
     public void setAddress_id(Address address_id) {
         this.address_id = address_id;

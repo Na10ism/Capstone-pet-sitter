@@ -16,9 +16,10 @@
 
     <p>Add Address</p>
 
-    <form action="#" th:action="@{/address/save}"
+    <form action="#" th:action="@{/address/save/} + ${client.client_id}"
           th:object="${address}" method="POST">
 
+        <p th:text="${client.client_id}"></p>
         <input type="text" th:field="*{street_address}" placeholder="Street Name">
         <input type="text" th:field="*{city}" placeholder="City">
         <input type="text" th:field="*{state}" placeholder="State">

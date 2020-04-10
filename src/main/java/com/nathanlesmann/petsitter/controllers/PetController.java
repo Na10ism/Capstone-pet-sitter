@@ -1,12 +1,12 @@
 package com.nathanlesmann.petsitter.controllers;
 
+import com.nathanlesmann.petsitter.entities.Client;
 import com.nathanlesmann.petsitter.entities.Pet;
+import com.nathanlesmann.petsitter.services.ClientService;
 import com.nathanlesmann.petsitter.services.PetService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +19,9 @@ public class PetController {
     @Autowired
     private PetService petService;
 
+    @Autowired
+    private ClientService clientService;
+
     @RequestMapping(value="/pets")
     public List<Pet> getAllPets(){
 
@@ -30,5 +33,26 @@ public class PetController {
         return petService.getPet(pet_id);
     }
 
+    @PostMapping("/pets/save")
+    public void savePet(@ModelAttribute("pet") Pet thePet) {
 
+        // save the employee
+        petService.updateOrAddPet(thePet);
+
+        // use a redirect to prevent duplicate submissions
+//       return "redirect:/address/showFormForAddress";
+    }
+
+    @RequestMapping(value = "/pet/showFormForPet/{client_id}")
+    public String showFormForPet(Model model, @PathVariable int client_id) {
+
+        // create model attribute to bind the form data
+        Pet pet = new Pet();
+
+        Client client = clientService.getClient(client_id).orElse(null);
+
+        model.addAttribute("pet", pet);
+
+        return "clients/clientForm";
+    }
 }
