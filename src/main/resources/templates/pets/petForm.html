@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="'width=device-width, initial-scale=1">
+
+    <title>Pet Form</title>
+</head>
+
+<body>
+
+<div>
+    <h3>Pet Information</h3>
+    <hr>
+
+    <p>Add Pet</p>
+
+    <form action="#" th:action="@{/pets/save}"
+          th:object="${address}" method="POST">
+
+        <input type="text" th:field="*{street_address}" placeholder="Street Name">
+        <input type="text" th:field="*{city}" placeholder="City">
+        <input type="text" th:field="*{state}" placeholder="State">
+        <input type="text" th:field="*{zipcode}" placeholder="Zipcode">
+
+        <button type="submit">Save</button>
+
+    </form>
+</div>
+
+
+</body>
+</html>
