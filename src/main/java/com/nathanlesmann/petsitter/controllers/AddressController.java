@@ -39,10 +39,7 @@ public class AddressController {
         addressService.saveAddress(Address);
     }
 
-    @RequestMapping(value = "/address/{id}", method = RequestMethod.PUT)
-    public void updateAddress(@RequestBody Address Address, @PathVariable int id) {
-        addressService.updateAddress(id, Address);
-    }
+
 
     @RequestMapping(value = "/address/{id}", method = RequestMethod.DELETE)
     public void deleteAddress(@PathVariable int id) {
@@ -76,14 +73,14 @@ public class AddressController {
 
         Address address = clientService.getAddress(theAddress.getAddress_id());
 
-        Client client = clientService.getClient(client_id).orElse(null);
+        Client client = clientService.getClientById(client_id).orElse(null);
 
         assert client != null;
         client.setAddress_id(address);
 
-        clientService.updateClient(client.getClient_id(),client);
+        clientService.updateClientById(client.getClient_id(),client);
 
         // use a redirect to prevent duplicate submissions
-        return "redirect:/clients";
+        return "redirect:/clients/" + client_id;
     }
 }

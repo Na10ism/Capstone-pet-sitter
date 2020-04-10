@@ -5,14 +5,14 @@ import com.nathanlesmann.petsitter.entities.Pet;
 import com.nathanlesmann.petsitter.services.ClientService;
 import com.nathanlesmann.petsitter.services.PetService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@RestController
+@Controller
 public class PetController {
 
 
@@ -33,14 +33,17 @@ public class PetController {
         return petService.getPet(pet_id);
     }
 
-    @PostMapping("/pets/save")
-    public void savePet(@ModelAttribute("pet") Pet thePet) {
+    @PostMapping("/pets/save/{client_id}")
+    public String savePet(@PathVariable int client_id, @ModelAttribute("pet") Pet thePet) {
 
         // save the employee
+        Client client = clientService.getClientById(client_id).orElse(null);
+
+
+        thePet.setClient(client);
         petService.updateOrAddPet(thePet);
 
-        // use a redirect to prevent duplicate submissions
-//       return "redirect:/address/showFormForAddress";
+        return "redirect:/clients/" + client_id;
     }
 
     @RequestMapping(value = "/pet/showFormForPet/{client_id}")
@@ -49,10 +52,11 @@ public class PetController {
         // create model attribute to bind the form data
         Pet pet = new Pet();
 
-        Client client = clientService.getClient(client_id).orElse(null);
+        Client client = clientService.getClientById(client_id).orElse(null);
 
         model.addAttribute("pet", pet);
+        model.addAttribute("client", client);
 
-        return "clients/clientForm";
+        return "pet/petForm";
     }
 }

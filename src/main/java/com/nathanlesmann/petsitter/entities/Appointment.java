@@ -4,4 +4,6 @@ import javax.persistence.Table;
 
 @Table(name="Appointment")
 public class Appointment {
+
+
 }
