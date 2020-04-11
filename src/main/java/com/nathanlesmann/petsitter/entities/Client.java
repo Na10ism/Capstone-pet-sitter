@@ -28,7 +28,7 @@ public class Client {
     @OneToMany(
             mappedBy = "client",
             cascade = CascadeType.ALL,
-            orphanRemoval = true
+            orphanRemoval = false
     )
 //    @JsonManagedReference
     private List<Pet> pets = new ArrayList<>();

@@ -16,13 +16,13 @@
 <div>
     <p>Client Information</p>
 
-    <form action="#" th:action="@{/saveClient/{client_id}}"
-          th:object="${client}" method="POST">
+    <form action="#" th:action="@{/saveClient/} + ${client.client_id} + '/' + ${address.address_id}"
+            th:object="${client}">
 
-        <input type="text" th:field="*{client_first_name}" placeholder="${client.client_first_name}">
-        <input type="text" th:field="*{client_last_name}" placeholder=${client.client_last_name}>
-        <input type="text" th:field="*{client_phone_number}" placeholder="${client.client_phone_number}">
-        <input type="text" th:field="*{client_email}" placeholder="${client.client_email}">
+        <input type="text" th:field="${client.client_first_name}" placeholder="${client.client_first_name}">
+        <input type="text" th:field="${client.client_last_name}" placeholder=${client.client_last_name}>
+        <input type="text" th:field="${client.client_phone_number}" placeholder="${client.client_phone_number}">
+        <input type="text" th:field="${client.client_email}" placeholder="${client.client_email}">
         <button type="submit">Save</button>
 
     </form>

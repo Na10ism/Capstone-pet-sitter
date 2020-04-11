@@ -16,8 +16,8 @@
 
     <p>Address Information</p>
 
-    <form action="#" th:action="@{/address/save/} + ${client.client_id}"
-          th:object="${address}" method="POST">
+    <form action="#" th:action="@{/saveAddress/} + ${address.address_id}"
+            th:object="${address}">
 
         <input type="text" th:field="*{street_address}" placeholder="${address.street_address}">
         <input type="text" th:field="*{city}" placeholder="${address.city}">
