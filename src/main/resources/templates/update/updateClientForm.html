@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="'width=device-width, initial-scale=1">
+
+    <title>Update Client</title>
+</head>
+
+<body>
+
+
+<h3>Update Client</h3>
+<hr>
+<div>
+    <p>Client Information</p>
+
+    <form action="#" th:action="@{/saveClient/} + ${client.client_id} + '/' + ${address.address_id}"
+            th:object="${client}">
+
+        <input type="text" th:field="${client.client_first_name}" placeholder="${client.client_first_name}">
+        <input type="text" th:field="${client.client_last_name}" placeholder=${client.client_last_name}>
+        <input type="text" th:field="${client.client_phone_number}" placeholder="${client.client_phone_number}">
+        <input type="text" th:field="${client.client_email}" placeholder="${client.client_email}">
+        <button type="submit">Save</button>
+
+    </form>
+</div>
+
+
+</body>
+</html>
