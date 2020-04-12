@@ -20,14 +20,12 @@
     </a>
 </div>
 
+
 <div class="container">
 
-    <h3 class="h3">Clients</h3>
+
+    <h3>Clients</h3>
     <hr>
-
-    <!-- Add a button -->
-
-
 
     <table class="clientTable">
         <thead>
@@ -54,7 +52,7 @@
             <td th:text="${tempClient.address_id}"></td>
             <td th:text="${tempClient.pets}"></td>
             <td >
-                <a th:href="@{/clients/} + ${tempClient.client_id}">View Client</a>
+                <a class="aButton" th:href="@{/clients/} + ${tempClient.client_id}">View</a>
 
             </td>
 

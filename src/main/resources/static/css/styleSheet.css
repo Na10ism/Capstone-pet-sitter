@@ -1,6 +1,4 @@
-p{
-color:blue;
-}
+
 
 body {
   background-color: #598392;
@@ -27,8 +25,9 @@ body {
 }
 
 .container h3{
-  font-size: 400px;
-  color: red;
+  margin: 10px;
+  font-size: 40px;
+  color: #124559;
 }
 
 
@@ -40,6 +39,13 @@ body {
   text-align: left;
   background-color: #4CAF50;
   color: white;
+}
+
+.aButton{
+  text-decoration: none;
+  height: 20px;
+  width: 20px;
+  radius: 20px;
 }
 
 
