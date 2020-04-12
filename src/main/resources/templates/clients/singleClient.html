@@ -33,6 +33,13 @@
         Add Pet
     </a>
 
+    <a th:href="@{/deleteClient/} + ${client.client_id}"
+       class="btn btn-primary btn-sm mb-3">
+        Remove Client
+    </a>
+
+
+
 
     <table class="table table-bordered table-striped">
         <thead class="thead-dark">
@@ -67,7 +74,11 @@
 <p th:text="${address.state}"></p>
 <p th:text="${address.zipcode}"></p>
 
-<h4 th:each="pet : ${pets}" th:text="${pet.pet_name}"></h4>
+<div th:each="pet : ${pets}">
+    <p th:text="${pet.pet_name}"></p>
+    <a th:href="@{/deletePet/} + ${client.client_id} + '/' + ${pet.pet_id}">Remove Pet</a>
+</div>
+
 
 
 
