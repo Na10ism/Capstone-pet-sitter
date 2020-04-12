@@ -10,7 +10,11 @@
 </head>
 
 <body>
-
+<div class="sidenav">
+    <a th:href="@{/clients/showFormForAdd}">
+        Add Client
+    </a>
+</div>
 
 <div class="container">
 
@@ -18,9 +22,7 @@
     <hr>
 
     <!-- Add a button -->
-    <a th:href="@{/clients/showFormForAdd}">
-        Add Client
-    </a>
+
 
 
     <table class="table table-bordered table-striped">
@@ -43,7 +45,10 @@
             <td th:text="${tempClient.client_email}"></td>
             <td th:text="${tempClient.address_id}"></td>
             <td th:text="${tempClient.pets}"></td>
+            <td >
+                <a th:href="@{/clients/} + ${tempClient.client_id}">View Client</a>
 
+            </td>
 
         </tr>
 
