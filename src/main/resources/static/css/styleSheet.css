@@ -1,0 +1,63 @@
+p{
+color:blue;
+}
+
+body {
+  background-color: #598392;
+}
+
+
+.container{
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  margin-left: 210px;
+  padding: 20px;
+  background-color: lightgrey;
+  border-radius: 25px;
+
+}
+
+.clientTable{
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.clientTable td, .clientTable th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.container h3{
+  font-size: 400px;
+  color: red;
+}
+
+
+.clientTable tr:nth-child(even){background-color: #f2f2f2;}
+
+.clientTable th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+
+
+
+.sidenav {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #124559;
+  padding-top: 20px;
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: lightgrey;
+  display: block;
+}

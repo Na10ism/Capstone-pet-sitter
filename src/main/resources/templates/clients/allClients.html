@@ -5,13 +5,16 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="styleSheet.css" rel="stylesheet"/>
+    <link th:href="@{/css/styleSheet.css}" type="text/css" rel="stylesheet" />
     <title>Clients</title>
 </head>
 
 <body>
 
+
 <div class="sidenav">
+    <a th:href="@{/clients}">Home</a>
+    <a th:href="@{/appointments}">Appointments</a>
     <a th:href="@{/clients/showFormForAdd}">
         Add Client
     </a>
@@ -19,20 +22,24 @@
 
 <div class="container">
 
-    <h3>Clients</h3>
+    <h3 class="h3">Clients</h3>
     <hr>
 
     <!-- Add a button -->
 
 
 
-    <table class="table table-bordered table-striped">
-        <thead class="thead-dark">
+    <table class="clientTable">
+        <thead>
         <tr>
             <th>Name</th>
             <th>Phone Number</th>
             <th>Email</th>
             <th>Address</th>
+            <th>Pets</th>
+            <th>Actions</th>
+
+
 
 
         </tr>
