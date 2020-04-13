@@ -38,18 +38,7 @@ public class PetController {
         return petService.getPet(pet_id);
     }
 
-    @PostMapping("/pets/save/{client_id}")
-    public String savePet(@PathVariable int client_id, @ModelAttribute("pet") Pet thePet) {
 
-        // save the employee
-        Client client = clientService.getClientById(client_id).orElse(null);
-
-
-        thePet.setClient(client);
-        petService.updateOrAddPet(thePet);
-
-        return "redirect:/clients/" + client_id;
-    }
 
     @RequestMapping(value = "/pet/showFormForPet/{client_id}")
     public String showFormForPet(Model model, @PathVariable int client_id) {
@@ -64,5 +53,18 @@ public class PetController {
 
         return "pet/petForm";
 
+    }
+
+    @PostMapping("/pets/save/{client_id}")
+    public String savePet(@PathVariable int client_id, @ModelAttribute("pet") Pet thePet) {
+
+        // save the employee
+        Client client = clientService.getClientById(client_id).orElse(null);
+
+
+        thePet.setClient(client);
+        petService.updateOrAddPet(thePet);
+
+        return "redirect:/clients/" + client_id;
     }
 }

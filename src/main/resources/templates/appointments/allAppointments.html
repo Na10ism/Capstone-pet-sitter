@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link th:href="@{/css/styleSheet.css}" type="text/css" rel="stylesheet" />
+    <title>Clients</title>
+</head>
+
+<body>
+
+
+<div class="sidenav">
+    <a th:href="@{/clients}">Home</a>
+    <a th:href="@{/appointments}">Appointments</a>
+    <a th:href="@{/clients/showFormForAdd}">
+        Add Client
+    </a>
+</div>
+
+
+<div class="container">
+
+
+    <h3>Appointments</h3>
+    <hr>
+
+    <table class="clientTable">
+        <thead>
+        <tr>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Client</th>
+            <th>Time</th>
+<!--            <th>Pets</th>-->
+            <th>Actions</th>
+
+
+
+
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="tempAppointment : ${appointments}">
+
+            <td th:text="${tempAppointment.apt_start_date}"></td>
+            <td th:text="${tempAppointment.apt_end_date}"></td>
+            <td th:text="${tempAppointment.client}"></td>
+            <td th:text="${tempAppointment.time}"></td>
+<!--            <td th:text="${tempClient.pets}"></td>-->
+<!--            <td >-->
+<!--                <a class="aButton" th:href="@{/clients/}">View</a>-->
+
+<!--            </td>-->
+
+        </tr>
+
+
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>

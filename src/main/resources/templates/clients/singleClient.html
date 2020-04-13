@@ -32,7 +32,8 @@
        class="btn btn-primary btn-sm mb-3">
         Remove Client
     </a>
-    <a th:href="@{/appointmentForm}">Create Appointment</a>
+    <a th:href="@{/appointments/showFormForAppointment/} +
+    ${client.client_id}">Create Appointment</a>
 
 </div>
 

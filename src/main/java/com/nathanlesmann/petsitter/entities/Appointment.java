@@ -1,22 +1,28 @@
 package com.nathanlesmann.petsitter.entities;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import javax.persistence.*;
 
+@Entity
 @Table(name="Appointment")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "client_id")
+
 public class Appointment {
 
     @Id
-    @GeneratedValue( strategy= GenerationType.IDENTITY )
+    @GeneratedValue(strategy = GenerationType.IDENTITY )
     private int appointment_id;
 
-    private String start_date;
+    private String apt_start_date;
 
-    private String end_date;
+    private String apt_end_date;
 
-    private Client client_id;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "client_id", nullable = false)
+    @JsonBackReference
+    public Client client;
 
     private String time;
 
@@ -25,26 +31,27 @@ public class Appointment {
 
     }
 
-    public Appointment(String start_date, String end_date, String time){
-        this.start_date = start_date;
-        this.end_date = end_date;
+    public Appointment(String apt_start_date, String apt_end_date, String time, Client client){
+        this.apt_start_date = apt_start_date;
+        this.apt_end_date = apt_end_date;
         this.time = time;
+        this.client = client;
     }
 
     public int getAppointment_id() {
         return appointment_id;
     }
 
-    public String getStart_date() {
-        return start_date;
+    public String getApt_start_date() {
+        return apt_start_date;
     }
 
-    public String getEnd_date() {
-        return end_date;
+    public String getApt_end_date() {
+        return apt_end_date;
     }
 
-    public Client getClient_id() {
-        return client_id;
+    public Client getClient() {
+        return client;
     }
 
     public String getTime() {
@@ -55,16 +62,16 @@ public class Appointment {
         this.appointment_id = appointment_id;
     }
 
-    public void setStart_date(String start_date) {
-        this.start_date = start_date;
+    public void setApt_start_date(String apt_start_date) {
+        this.apt_start_date = apt_start_date;
     }
 
-    public void setEnd_date(String end_date) {
-        this.end_date = end_date;
+    public void setApt_end_date(String apt_end_date) {
+        this.apt_end_date = apt_end_date;
     }
 
-    public void setClient_id(Client client_id) {
-        this.client_id = client_id;
+    public void setClient(Client client) {
+        this.client = client;
     }
 
     public void setTime(String time) {
@@ -75,8 +82,8 @@ public class Appointment {
     public String toString() {
         return "Appointment{" +
                 "appointment_id=" + appointment_id +
-                ", start_date='" + start_date + '\'' +
-                ", end_date='" + end_date + '\'' +
+                ", start_date='" + apt_start_date + '\'' +
+                ", end_date='" + apt_end_date + '\'' +
                 ", time='" + time + '\'' +
                 '}';
     }
