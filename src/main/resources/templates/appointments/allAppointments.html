@@ -51,10 +51,10 @@
             <td th:text="${tempAppointment.client}"></td>
             <td th:text="${tempAppointment.time}"></td>
 <!--            <td th:text="${tempClient.pets}"></td>-->
-<!--            <td >-->
-<!--                <a class="aButton" th:href="@{/clients/}">View</a>-->
+            <td >
+                <a class="aButton" th:href="@{/appointments/} + ${tempAppointment.appointment_id}">View</a>
 
-<!--            </td>-->
+            </td>
 
         </tr>
 

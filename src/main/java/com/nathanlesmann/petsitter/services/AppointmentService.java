@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AppointmentService {
@@ -23,8 +24,8 @@ public class AppointmentService {
         return appointments;
     }
 
-    public void getAppointmentById(int appointment_id){
-        appointmentRepository.findById(appointment_id);
+    public Optional<Appointment> getAppointmentById(int appointment_id){
+        return appointmentRepository.findById(appointment_id);
     }
 
     public void updateOrAddAppointment(Appointment theAppointment) {
