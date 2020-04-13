@@ -24,17 +24,17 @@
 <div class="container">
 
 
-    <h3>Clients</h3>
+    <h3>Appointments</h3>
     <hr>
 
     <table class="clientTable">
         <thead>
         <tr>
-            <th>Name</th>
-            <th>Phone Number</th>
-            <th>Email</th>
-            <th>Address</th>
-            <th>Pets</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Client</th>
+            <th>Time</th>
+<!--            <th>Pets</th>-->
             <th>Actions</th>
 
 
@@ -44,17 +44,17 @@
         </thead>
 
         <tbody>
-        <tr th:each="tempClient : ${clients}">
+        <tr th:each="tempAppointment : ${appointments}">
 
-            <td th:text="${tempClient.client_first_name} + ' ' +${tempClient.client_last_name}"></td>
-            <td th:text="${tempClient.client_phone_number}"></td>
-            <td th:text="${tempClient.client_email}"></td>
-            <td th:text="${tempClient.address_id}"></td>
-            <td th:text="${tempClient.pets}"></td>
-            <td >
-                <a class="aButton" th:href="@{/clients/} + ${tempClient.client_id}">View</a>
+            <td th:text="${tempAppointment.apt_start_date}"></td>
+            <td th:text="${tempAppointment.apt_end_date}"></td>
+            <td th:text="${tempAppointment.client}"></td>
+            <td th:text="${tempAppointment.time}"></td>
+<!--            <td th:text="${tempClient.pets}"></td>-->
+<!--            <td >-->
+<!--                <a class="aButton" th:href="@{/clients/}">View</a>-->
 
-            </td>
+<!--            </td>-->
 
         </tr>
 

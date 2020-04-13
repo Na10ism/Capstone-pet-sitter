@@ -58,11 +58,7 @@ public class ClientController {
 
 
 
-    @RequestMapping(value = "/clients/{id}", method = RequestMethod.DELETE)
-    public void deleteClient(@PathVariable int id) {
-        clientService.deleteClient(id);
 
-    }
 
 }
 

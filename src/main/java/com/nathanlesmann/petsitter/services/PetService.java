@@ -29,10 +29,6 @@ public class PetService {
         return pets;
     }
 
-    public void addPet(Pet pet) {
-
-        petRepository.save(pet);
-    }
 
     public Optional<Pet> getPet(int id) {
         return petRepository.findById(id);
