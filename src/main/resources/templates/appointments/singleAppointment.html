@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link th:href="@{/css/styleSheet.css}" type="text/css" rel="stylesheet" />
+    <title>Client</title>
+</head>
+
+<body>
+
+<div class="sidenav">
+    <!-- Add a button -->
+    <a th:href="@{/clients}"
+       class="btn btn-primary btn-sm mb-3">
+        Home
+    </a>
+
+    <a th:href="@{/updateClient/} + ${client.client_id}"
+       class="btn btn-primary btn-sm mb-3">
+        Update Appointment
+    </a>
+
+    <a th:href="@{/deleteAppointment/} + ${appointment.appointment_id}"
+       class="btn btn-primary btn-sm mb-3">
+        Remove Appointment
+    </a>
+
+</div>
+
+<div class="container">
+
+    <h3 th:text="Appointment For + ' ' +
+    ${client.client_first_name} + ' ' + ${client.client_last_name}"></h3>
+
+    <hr>
+
+
+    <table class="clientTable">
+        <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Phone Number</th>
+            <th>Email</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr>
+
+            <td th:text="${client.client_first_name}"></td>
+            <td th:text="${client.client_last_name}"></td>
+            <td th:text="${client.client_phone_number}"></td>
+            <td th:text="${client.client_email}"></td>
+
+
+        </tr>
+        </tbody>
+    </table>
+
+    <p><strong>Street Name</strong></p>
+
+    <p th:text="${address.street_address}">
+    <p>City</p>
+    <p th:text="${address.city}"></p>
+    <p>State</p>
+    <p th:text="${address.state}"></p>
+    <p>Zip code</p>
+    <p th:text="${address.zipcode}"></p>
+
+    <div th:each="pet : ${pets}">
+        <p th:text="${pet.pet_name}"></p>
+    </div>
+
+</div>
+
+
+
+</body>
+</html>
