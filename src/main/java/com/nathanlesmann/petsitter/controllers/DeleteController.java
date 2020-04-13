@@ -3,6 +3,7 @@ package com.nathanlesmann.petsitter.controllers;
 import com.nathanlesmann.petsitter.entities.Client;
 import com.nathanlesmann.petsitter.entities.Pet;
 import com.nathanlesmann.petsitter.services.AddressService;
+import com.nathanlesmann.petsitter.services.AppointmentService;
 import com.nathanlesmann.petsitter.services.ClientService;
 import com.nathanlesmann.petsitter.services.PetService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,9 @@ public class DeleteController {
     @Autowired
     private PetService petService;
 
+    @Autowired
+    private AppointmentService appointmentService;
+
     @RequestMapping(value = "/deleteClient/{client_id}")
     public String deleteClient(@PathVariable int client_id) {
 
@@ -42,6 +46,22 @@ public class DeleteController {
     public String deletePet(@PathVariable int pet_id, @PathVariable int client_id) {
 
         petService.deletePet(pet_id);
+
+        return "redirect:/clients/" + client_id;
+    }
+
+    @RequestMapping(value = "/deleteAppointment/{appointment_id}")
+    public String deleteAppointmentFromAppointmentPage(@PathVariable int appointment_id) {
+
+        appointmentService.deleteAppointment(appointment_id);
+
+        return "redirect:/appointments";
+    }
+
+    @RequestMapping(value = "/deleteAppointment/{client_id}/{appointment_id}")
+    public String deleteAppointmentFromClientPage(@PathVariable int appointment_id, @PathVariable int client_id) {
+
+        appointmentService.deleteAppointment(appointment_id);
 
         return "redirect:/clients/" + client_id;
     }
