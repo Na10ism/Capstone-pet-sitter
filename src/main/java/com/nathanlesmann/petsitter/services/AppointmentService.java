@@ -1,4 +1,5 @@
 package com.nathanlesmann.petsitter.services;
+import com.nathanlesmann.petsitter.entities.Address;
 import com.nathanlesmann.petsitter.entities.Appointment;
 import com.nathanlesmann.petsitter.entities.Pet;
 import com.nathanlesmann.petsitter.repositories.AppointmentRepository;
@@ -35,6 +36,11 @@ public class AppointmentService {
     public void deleteAppointment(int id) {
         appointmentRepository.deleteById(id);
     }
+
+    public void updateAppointmentById(int id, Appointment appointment) {
+        appointmentRepository.save(appointment);
+    }
+
 
     public List<Appointment> getAllAppointmentsByClientId(int client_id) {
         return appointmentRepository.getAllAppointmentsByClientId(client_id);

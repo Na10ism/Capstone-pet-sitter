@@ -46,6 +46,7 @@ public class AppointmentController {
         assert appointment != null;
         Client client = appointment.getClient();
 
+        model.addAttribute("appointment",appointment);
         model.addAttribute("client", client);
 
         assert client != null;
