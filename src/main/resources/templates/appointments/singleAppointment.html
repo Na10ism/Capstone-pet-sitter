@@ -13,6 +13,8 @@
 
 <div class="sidenav">
     <!-- Add a button -->
+    <h1>Pet Sitter</h1>
+    <hr>
     <a th:href="@{/clients}"
        class="btn btn-primary btn-sm mb-3">
         Home
@@ -32,49 +34,65 @@
 
 <div class="container">
 
-    <h3 th:text="'Appointment:' + ' ' +
-    ${client.client_first_name} + ' ' + ${client.client_last_name}"></h3>
+    <h1 th:text="'Appointment:' + ' ' +
+    ${client.client_first_name} + ' ' + ${client.client_last_name}"></h1>
 
     <hr>
 
+    <div class="containerGrid">
+        <div class="containerOne">
+            <h2>Client Information</h2>
+            <h3><strong>First Name</strong></h3>
+            <p th:text="${client.client_first_name}"></p>
 
-    <table class="clientTable">
-        <thead>
-        <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Phone Number</th>
-            <th>Email</th>
-        </tr>
-        </thead>
-
-        <tbody>
-        <tr>
-
-            <td th:text="${client.client_first_name}"></td>
-            <td th:text="${client.client_last_name}"></td>
-            <td th:text="${client.client_phone_number}"></td>
-            <td th:text="${client.client_email}"></td>
+            <h3><strong>Last Name</strong></h3>
+            <p th:text="${client.client_last_name}"></p>
 
 
-        </tr>
-        </tbody>
-    </table>
+            <h3><Strong>Phone Number</Strong></h3>
+            <p th:text="${client.client_phone_number}"></p>
+            <h3><Strong>Email</Strong></h3>
+            <p th:text="${client.client_email}"></p>
+        </div>
 
-    <p><strong>Street Name</strong></p>
+        <div class="containerTwo">
+            <h2>Address Information</h2>
+            <h3>Street Name</h3>
+            <p th:text="${address.street_address}">
+            <h3>City</h3>
+            <p th:text="${address.city}"></p>
+            <h3>State</h3>
+            <p th:text="${address.state}"></p>
+            <h3>Zip code</h3>
+            <p th:text="${address.zipcode}"></p>
+        </div>
 
-    <p th:text="${address.street_address}">
-    <p>City</p>
-    <p th:text="${address.city}"></p>
-    <p>State</p>
-    <p th:text="${address.state}"></p>
-    <p>Zip code</p>
-    <p th:text="${address.zipcode}"></p>
+        <div class="containerThree" >
+            <div class="containerThreeRowOne" th:each="pet : ${pets}">
+                <h2>Address Information</h2>
+                <h3 class="inline">Street Name</h3>
+                <h3 class="inline">City</h3>
 
-    <div th:each="pet : ${pets}">
-        <p th:text="${pet.pet_name}"></p>
+                <p th:text="${address.street_address}">
+                <p class="inline" th:text="${address.city}"></p>
+                <h3>State</h3>
+                <p th:text="${address.state}"></p>
+                <h3 >Zip code</h3>
+                <p th:text="${address.zipcode}"></p>
+
+                <p th:text="${appointment.notes}"></p>
+        </div>
+
+            <div class="containerThreeRowTwo" th:each="pet : ${pets}">
+                <h3>Pet Name</h3>
+                <p th:text="${pet.pet_name}"></p>
+                <h3>Pet Type</h3>
+                <p th:text="${pet.pet_type}"></p>
+            </div>
+        </div>
+
+        </div>
     </div>
-
 </div>
 
 

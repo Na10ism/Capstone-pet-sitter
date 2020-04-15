@@ -40,6 +40,7 @@ public class AppointmentController {
     @RequestMapping(value = "/appointments/{appointment_id}")
     public String getClientById(@PathVariable int appointment_id, Model model) {
 
+
         Appointment appointment =
                 appointmentService.getAppointmentById(appointment_id).orElse(null);
 
@@ -52,10 +53,14 @@ public class AppointmentController {
         assert client != null;
         model.addAttribute("address", clientService.getAddressById(client.getIdFromAddress_id()));
 
+        List<Pet> pets = petService.getAllPetsByClientId(client.getClient_id());
+        model.addAttribute("pets", pets);
 
-        //create getAllPetsByClientId
-        model.addAttribute("pets", petService.getAllPetsByClientId(client.getClient_id()));
+//        Pet pet = petService.getPet()
 
+        for (Pet pet: pets) {
+            System.out.println(pet);
+        }
 
         return "appointments/singleAppointment";
     }
