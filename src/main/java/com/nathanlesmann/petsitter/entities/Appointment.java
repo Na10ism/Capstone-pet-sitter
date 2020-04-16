@@ -26,16 +26,19 @@ public class Appointment {
 
     private String time;
 
+    private String notes;
+
 
     public Appointment(){
 
     }
 
-    public Appointment(String apt_start_date, String apt_end_date, String time, Client client){
+    public Appointment(String apt_start_date, String apt_end_date, String time, Client client, String notes){
         this.apt_start_date = apt_start_date;
         this.apt_end_date = apt_end_date;
         this.time = time;
         this.client = client;
+        this.notes = notes;
     }
 
     public int getAppointment_id() {
@@ -76,6 +79,15 @@ public class Appointment {
 
     public void setTime(String time) {
         this.time = time;
+    }
+
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
 
     @Override

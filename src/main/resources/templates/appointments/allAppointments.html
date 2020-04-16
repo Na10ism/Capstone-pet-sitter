@@ -13,6 +13,8 @@
 
 
 <div class="sidenav">
+    <h1>Pet Sitter</h1>
+    <hr>
     <a th:href="@{/clients}">Home</a>
     <a th:href="@{/appointments}">Appointments</a>
     <a th:href="@{/clients/showFormForAdd}">
@@ -24,7 +26,7 @@
 <div class="container">
 
 
-    <h3>Appointments</h3>
+    <h1>Appointments</h1>
     <hr>
 
     <table class="clientTable">
@@ -51,10 +53,10 @@
             <td th:text="${tempAppointment.client}"></td>
             <td th:text="${tempAppointment.time}"></td>
 <!--            <td th:text="${tempClient.pets}"></td>-->
-<!--            <td >-->
-<!--                <a class="aButton" th:href="@{/clients/}">View</a>-->
+            <td >
+                <a class="aButton" th:href="@{/appointments/} + ${tempAppointment.appointment_id}">View</a>
 
-<!--            </td>-->
+            </td>
 
         </tr>
 

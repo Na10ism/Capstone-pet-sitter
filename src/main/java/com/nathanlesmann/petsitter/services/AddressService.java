@@ -1,6 +1,7 @@
 package com.nathanlesmann.petsitter.services;
 
 import com.nathanlesmann.petsitter.entities.Address;
+import com.nathanlesmann.petsitter.entities.Client;
 import com.nathanlesmann.petsitter.repositories.AddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

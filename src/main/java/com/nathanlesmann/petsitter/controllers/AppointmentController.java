@@ -5,6 +5,7 @@ import com.nathanlesmann.petsitter.entities.Client;
 import com.nathanlesmann.petsitter.entities.Pet;
 import com.nathanlesmann.petsitter.services.AppointmentService;
 import com.nathanlesmann.petsitter.services.ClientService;
+import com.nathanlesmann.petsitter.services.PetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +25,9 @@ public class AppointmentController {
     @Autowired
     private ClientService clientService;
 
+    @Autowired
+    private PetService petService;
+
     @RequestMapping(value="/appointments")
     public String getAllAppointments(Model model){
         List<Appointment> appointments = appointmentService.getAllAppointments();
@@ -31,6 +35,34 @@ public class AppointmentController {
         model.addAttribute("appointments", appointments);
 
         return "appointments/allAppointments";
+    }
+
+    @RequestMapping(value = "/appointments/{appointment_id}")
+    public String getClientById(@PathVariable int appointment_id, Model model) {
+
+
+        Appointment appointment =
+                appointmentService.getAppointmentById(appointment_id).orElse(null);
+
+        assert appointment != null;
+        Client client = appointment.getClient();
+
+        model.addAttribute("appointment",appointment);
+        model.addAttribute("client", client);
+
+        assert client != null;
+        model.addAttribute("address", clientService.getAddressById(client.getIdFromAddress_id()));
+
+        List<Pet> pets = petService.getAllPetsByClientId(client.getClient_id());
+        model.addAttribute("pets", pets);
+
+//        Pet pet = petService.getPet()
+
+        for (Pet pet: pets) {
+            System.out.println(pet);
+        }
+
+        return "appointments/singleAppointment";
     }
 
     @RequestMapping(value = "/appointments/showFormForAppointment/{client_id}")

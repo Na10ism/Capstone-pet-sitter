@@ -1,4 +1,5 @@
 package com.nathanlesmann.petsitter.services;
+import com.nathanlesmann.petsitter.entities.Address;
 import com.nathanlesmann.petsitter.entities.Appointment;
 import com.nathanlesmann.petsitter.entities.Pet;
 import com.nathanlesmann.petsitter.repositories.AppointmentRepository;
@@ -6,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AppointmentService {
@@ -23,8 +25,8 @@ public class AppointmentService {
         return appointments;
     }
 
-    public void getAppointmentById(int appointment_id){
-        appointmentRepository.findById(appointment_id);
+    public Optional<Appointment> getAppointmentById(int appointment_id){
+        return appointmentRepository.findById(appointment_id);
     }
 
     public void updateOrAddAppointment(Appointment theAppointment) {
@@ -34,6 +36,11 @@ public class AppointmentService {
     public void deleteAppointment(int id) {
         appointmentRepository.deleteById(id);
     }
+
+    public void updateAppointmentById(int id, Appointment appointment) {
+        appointmentRepository.save(appointment);
+    }
+
 
     public List<Appointment> getAllAppointmentsByClientId(int client_id) {
         return appointmentRepository.getAllAppointmentsByClientId(client_id);
