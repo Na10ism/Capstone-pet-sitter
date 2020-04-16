@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link th:href="@{/css/styleSheet.css}" type="text/css" rel="stylesheet" />
+    <link th:href="@{/css/styleSheet.css}" type="text/css" rel="stylesheet"/>
     <title>Clients</title>
 </head>
 
@@ -40,8 +40,6 @@
             <th>Actions</th>
 
 
-
-
         </tr>
         </thead>
 
@@ -53,7 +51,7 @@
             <td th:text="${tempClient.client_email}"></td>
             <td th:text="${tempClient.address_id}"></td>
             <td th:text="${tempClient.pets}"></td>
-            <td >
+            <td>
                 <a class="aButton" th:href="@{/clients/} + ${tempClient.client_id}">View</a>
 
             </td>
