@@ -4,13 +4,24 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="'width=device-width, initial-scale=1">
-
+    <link th:href="@{/css/styleSheet.css}" type="text/css" rel="stylesheet" />
     <title>Appointment Form</title>
 </head>
 
 <body>
 
-<div>
+<div class="sidenav">
+    <h1>Pet Sitter</h1>
+    <hr>
+    <a th:href="@{/clients}">Clients</a>
+    <a th:href="@{/appointments}">Appointments</a>
+    <a th:href="@{/clients/showFormForAdd}">
+        Add Client
+    </a>
+</div>
+<div class="container">
+
+
     <h3>Appointment Information</h3>
     <hr>
 

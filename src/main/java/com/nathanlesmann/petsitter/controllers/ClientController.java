@@ -1,6 +1,7 @@
 package com.nathanlesmann.petsitter.controllers;
 
 import com.nathanlesmann.petsitter.entities.Client;
+import com.nathanlesmann.petsitter.services.AppointmentService;
 import com.nathanlesmann.petsitter.services.ClientService;
 import com.nathanlesmann.petsitter.services.PetService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,9 @@ public class ClientController {
 
     @Autowired
     private PetService petService;
+
+    @Autowired
+    private AppointmentService appointmentService;
 
     @RequestMapping(value = "/clients")
     public String getAllClients(Model model) {
@@ -51,6 +55,9 @@ public class ClientController {
 
         //create getAllPetsByClientId
         model.addAttribute("pets", petService.getAllPetsByClientId(client.getClient_id()));
+
+        model.addAttribute("appointments",
+                appointmentService.getAllAppointmentsByClientId(client.getClient_id()));
 
 
         return "clients/singleClient";

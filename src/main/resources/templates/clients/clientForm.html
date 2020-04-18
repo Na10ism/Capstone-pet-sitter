@@ -4,17 +4,25 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="'width=device-width, initial-scale=1">
-
+    <link th:href="@{/css/styleSheet.css}" type="text/css" rel="stylesheet" />
     <title>New Client</title>
 </head>
 
 <body>
-
-
-    <h3>Create Client</h3>
+<div class="sidenav">
+    <h1>Pet Sitter</h1>
+    <hr>
+    <a th:href="@{/clients}">Clients</a>
+    <a th:href="@{/appointments}">Appointments</a>
+    <a th:href="@{/clients/showFormForAdd}">
+        Add Client
+    </a>
+</div>
+<div class="container">
+    <h1>Create Client</h1>
     <hr>
     <div>
-        <p>Client Information</p>
+        <h2>Client Information</h2>
 
         <form action="#" th:action="@{/address/showFormForAddress}"
             th:object="${client}" method="POST">
@@ -28,6 +36,6 @@
         </form>
 </div>
 
-
+</div>
 </body>
 </html>

@@ -13,34 +13,36 @@
 
 <div class="sidenav">
     <!-- Add a button -->
-    <a th:href="@{/clients}"
-       class="btn btn-primary btn-sm mb-3">
-        Home
+    <a th:href="@{/clients}">Clients</a>
+    <a th:href="@{/appointments}">Appointments</a>
+    <a th:href="@{/clients/showFormForAdd}">
+        Add Client
     </a>
 
-    <a th:href="@{/updateClient/} + ${client.client_id}"
-       class="btn btn-primary btn-sm mb-3">
-        Update Client
-    </a>
 
-    <a th:href="@{/pet/showFormForPet/} + ${client.client_id}"
-       class="btn btn-primary btn-sm mb-3">
-        Add Pet
-    </a>
-
-    <a th:href="@{/deleteClient/} + ${client.client_id}"
-       class="btn btn-primary btn-sm mb-3">
-        Remove Client
-    </a>
-    <a th:href="@{/appointments/showFormForAppointment/} +
-    ${client.client_id}">Create Appointment</a>
 
 </div>
 
 <div class="container">
 
-    <h3 th:text="${client.client_first_name} + ' ' + ${client.client_last_name}"></h3>
+    <div class="buttonsForSingle">
+    <h1 th:text="${client.client_first_name} + ' ' + ${client.client_last_name}"></h1>
+        <div class="buttons">
+        <a class="myButton" th:href="@{/updateClient/} + ${client.client_id}">
+            Update Client
+        </a>
 
+        <a class="myButton" th:href="@{/pet/showFormForPet/} + ${client.client_id}">
+            Add Pet
+        </a>
+
+        <a class="myButton" th:href="@{/deleteClient/} + ${client.client_id}">
+            Remove Client
+        </a>
+        <a class="myButton" th:href="@{/appointments/showFormForAppointment/} +
+    ${client.client_id}">Create Appointment</a>
+        </div>
+    </div>
     <hr>
 
 
@@ -78,6 +80,11 @@
     <div th:each="pet : ${pets}">
         <p th:text="${pet.pet_name}"></p>
         <a th:href="@{/deletePet/} + ${client.client_id} + '/' + ${pet.pet_id}">Remove Pet</a>
+    </div>
+
+    <div th:each="appointment : ${appointments}">
+        <p th:text="${appointment.apt_start_date}"></p>
+        <p th:text="${appointment.apt_end_date}"></p>
     </div>
 
 </div>

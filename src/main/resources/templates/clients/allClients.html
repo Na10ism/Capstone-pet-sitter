@@ -15,7 +15,7 @@
 <div class="sidenav">
     <h1>Pet Sitter</h1>
     <hr>
-    <a th:href="@{/clients}">Home</a>
+    <a th:href="@{/clients}">Clients</a>
     <a th:href="@{/appointments}">Appointments</a>
     <a th:href="@{/clients/showFormForAdd}">
         Add Client
@@ -50,9 +50,11 @@
             <td th:text="${tempClient.client_phone_number}"></td>
             <td th:text="${tempClient.client_email}"></td>
             <td th:text="${tempClient.address_id}"></td>
-            <td th:text="${tempClient.pets}"></td>
+            <td th:text="${tempClient.pets.toString()
+                            .replace('[', ' ')
+                            .replace(']', ' ')}"></td>
             <td>
-                <a class="aButton" th:href="@{/clients/} + ${tempClient.client_id}">View</a>
+                <a class="myButton" th:href="@{/clients/} + ${tempClient.client_id}">View</a>
 
             </td>
 
@@ -63,6 +65,8 @@
     </table>
 
 </div>
+
+
 
 </body>
 </html>

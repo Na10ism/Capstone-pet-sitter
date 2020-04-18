@@ -9,6 +9,6 @@ import java.util.List;
 
 public interface AppointmentRepository extends CrudRepository<Appointment, Integer> {
 
-    @Query("select s from Pet s where client_id= :client_id ")
+    @Query("select s from Appointment s where client_id= :client_id ")
     public List<Appointment> getAllAppointmentsByClientId(int client_id);
 }
