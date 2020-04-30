@@ -5,30 +5,54 @@
     <meta charset="utf-8">
     <meta name="viewport" content="'width=device-width, initial-scale=1">
 
+    <link th:href="@{/css/styleSheet.css}" type="text/css" rel="stylesheet"/>
+
     <title>Update Appointment</title>
 </head>
 
 <body>
 
-<div>
-    <h3>Update Appointment</h3>
+<div class="sidenav">
+    <h1>Pet Sitter</h1>
     <hr>
-
-    <p>Appointment Information</p>
-
-    <form action="#" th:action="@{/saveAppointment/} + ${appointment.appointment_id}"
-          th:object="${appointment}">
-
-        <input type="text" th:field="*{apt_start_date}" placeholder="${appointment.apt_start_date}">
-        <input type="text" th:field="*{apt_end_date}" placeholder="${appointment.apt_end_date}">
-        <p th:text="${client.client_first_name} + ' ' + ${client.client_last_name}"></p>
-        <input type="text" th:field="*{time}" placeholder="${appointment.time}">
-
-        <button type="submit">Save</button>
-
-    </form>
+    <a th:href="@{/clients}">Clients</a>
+    <a th:href="@{/appointments}">Appointments</a>
+    <a th:href="@{/clients/showFormForAdd}">
+        Add Client
+    </a>
 </div>
 
+<div class="container">
+    <h1>Update Appointment</h1>
+    <hr>
+    <div>
+        <h2>Appointment Information</h2>
+
+        <form action="#" th:action="@{/saveAppointment/} + ${appointment.appointment_id}"
+              th:object="${appointment}">
+            <div>
+                <h3>Start Date</h3>
+                <input type="text" th:field="*{apt_start_date}" placeholder="${appointment.apt_start_date}">
+            </div>
+            <div>
+                <h3>End Date</h3>
+            <input type="text" th:field="*{apt_end_date}" placeholder="${appointment.apt_end_date}">
+            </div>78
+            <div>
+                <h3>Time</h3>
+            <input type="text" th:field="*{time}" placeholder="${appointment.time}">
+            </div>
+
+            <div>
+                <h3>Notes</h3>
+                <textarea type="comment" th:field="*{notes}" placeholder="Notes" maxlength= "500"> </textarea>
+            </div>
+
+            <button class="myButton" type="submit" style="margin-top: 20px">Save</button>
+
+        </form>
+    </div>
+</div>
 
 </body>
 </html>

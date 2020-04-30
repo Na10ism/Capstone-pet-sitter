@@ -4,31 +4,52 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="'width=device-width, initial-scale=1">
-
+    <link th:href="@{/css/styleSheet.css}" type="text/css" rel="stylesheet"/>
     <title>Update Address</title>
 </head>
 
 <body>
 
-<div>
-    <h3>Update Address</h3>
+<div class="sidenav">
+    <h1>Pet Sitter</h1>
     <hr>
-
-    <p>Address Information</p>
-
-    <form action="#" th:action="@{/saveAddress/} + ${address.address_id}"
-            th:object="${address}">
-
-        <input type="text" th:field="*{street_address}" placeholder="${address.street_address}">
-        <input type="text" th:field="*{city}" placeholder="${address.city}">
-        <input type="text" th:field="*{state}" placeholder="${address.state}">
-        <input type="text" th:field="*{zipcode}" placeholder="${address.zipdcode}">
-
-        <button type="submit">Save</button>
-
-    </form>
+    <a th:href="@{/clients}">Clients</a>
+    <a th:href="@{/appointments}">Appointments</a>
+    <a th:href="@{/clients/showFormForAdd}">
+        Add Client
+    </a>
 </div>
 
+<div class="container">
+    <h1>Update Address</h1>
+    <hr>
+    <div>
+        <h2>Address Information</h2>
+
+        <form action="#" th:action="@{/saveAddress/} + ${client.client_id} + '/' + ${address.address_id}"
+              th:object="${address}">
+            <div>
+                <h3>Street Name</h3>
+                <input type="text" th:field="*{street_address}" placeholder="${address.street_address}">
+            </div>
+            <div>
+                <h3>City</h3>
+            <input type="text" th:field="*{city}" placeholder="${address.city}">
+            </div>
+            <div>
+                <h3>State</h3>
+            <input type="text" th:field="*{state}" placeholder="${address.state}">
+                </div>
+            <div>
+                <h3>Zipcode</h3>
+            <input type="text" th:field="*{zipcode}" placeholder="${address.zipdcode}">
+            </div>
+
+            <button class="myButton" type="submit" style="margin-top: 20px">Save</button>
+
+        </form>
+    </div>
+</div>
 
 </body>
 </html>

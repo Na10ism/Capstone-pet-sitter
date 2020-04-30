@@ -57,9 +57,14 @@ public class Client {
         this.address_id = address_id;
     }
 
-    public List<Pet> getPets() {
-        return pets;
+//    public List<Pet> getPets() {
+//        return pets;
+//    }
+
+    public String getPets() {
+        return pets.toString();
     }
+
 
     public void addPet(Pet pet) {
 
@@ -123,13 +128,8 @@ public class Client {
 
     @Override
     public String toString() {
-        return "Client{" +
-                "client_id=" + client_id +
-                ", client_first_name='" + client_first_name + '\'' +
-                ", client_last_name='" + client_last_name + '\'' +
-                ", client_phone_number='" + client_phone_number + '\'' +
-                ", client_email='" + client_email + '\'' +
-                ", address_id=" + address_id +
-                '}';
+        return
+                client_first_name + ' ' +
+                client_last_name;
     }
 }
