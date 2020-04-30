@@ -20,21 +20,33 @@
     </a>
 </div>
 <div class="container">
-
-
-    <h3>Appointment Information</h3>
+    <h1>Appointment Information</h1>
     <hr>
 
-    <p>Create Appointment</p>
+    <h2>Create Appointment</h2>
 
     <form action="#" th:action="@{/appointments/save/} + ${client.client_id}"
           th:object="${appointment}" method="POST">
-
+<div>
+    <h3>Start Date</h3>
         <input type="text" th:field="*{apt_start_date}" placeholder="Start Date">
+</div>
+        <div>
+            <h3>End Date</h3>
         <input type="text" th:field="*{apt_end_date}" placeholder="End Date">
+            </div>
+        <div>
+            <h3>Time</h3>
         <input type="text" th:field="*{time}" placeholder="Time">
+        </div>
 
-        <button type="submit">Save</button>
+        <div>
+            <h3>Notes</h3>
+            <textarea type="comment" th:field="*{notes}" placeholder="Notes" maxlength= "500"> </textarea>
+
+        </div>
+
+        <button class="myButton" type="submit" style="margin-top: 20px">Save</button>
 
     </form>
 </div>

@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="'width=device-width, initial-scale=1">
 
-    <link th:href="@{/css/styleSheet.css}" type="text/css" rel="stylesheet" />
+    <link th:href="@{/css/styleSheet.css}" type="text/css" rel="stylesheet"/>
 
     <title>Update Appointment</title>
 </head>
@@ -22,25 +22,37 @@
     </a>
 </div>
 
-<div>
-    <h3>Update Appointment</h3>
+<div class="container">
+    <h1>Update Appointment</h1>
     <hr>
+    <div>
+        <h2>Appointment Information</h2>
 
-    <p>Appointment Information</p>
+        <form action="#" th:action="@{/saveAppointment/} + ${appointment.appointment_id}"
+              th:object="${appointment}">
+            <div>
+                <h3>Start Date</h3>
+                <input type="text" th:field="*{apt_start_date}" placeholder="${appointment.apt_start_date}">
+            </div>
+            <div>
+                <h3>End Date</h3>
+            <input type="text" th:field="*{apt_end_date}" placeholder="${appointment.apt_end_date}">
+            </div>78
+            <div>
+                <h3>Time</h3>
+            <input type="text" th:field="*{time}" placeholder="${appointment.time}">
+            </div>
 
-    <form action="#" th:action="@{/saveAppointment/} + ${appointment.appointment_id}"
-          th:object="${appointment}">
+            <div>
+                <h3>Notes</h3>
+                <textarea type="comment" th:field="*{notes}" placeholder="Notes" maxlength= "500"> </textarea>
+            </div>
 
-        <input type="text" th:field="*{apt_start_date}" placeholder="${appointment.apt_start_date}">
-        <input type="text" th:field="*{apt_end_date}" placeholder="${appointment.apt_end_date}">
-        <p th:text="${client.client_first_name} + ' ' + ${client.client_last_name}"></p>
-        <input type="text" th:field="*{time}" placeholder="${appointment.time}">
+            <button class="myButton" type="submit" style="margin-top: 20px">Save</button>
 
-        <button type="submit">Save</button>
-
-    </form>
+        </form>
+    </div>
 </div>
-
 
 </body>
 </html>

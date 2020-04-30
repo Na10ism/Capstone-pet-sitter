@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="'width=device-width, initial-scale=1">
-    <link th:href="@{/css/styleSheet.css}" type="text/css" rel="stylesheet" />
+    <link th:href="@{/css/styleSheet.css}" type="text/css" rel="stylesheet"/>
     <title>New Client</title>
 </head>
 
@@ -25,16 +25,28 @@
         <h2>Client Information</h2>
 
         <form action="#" th:action="@{/address/showFormForAddress}"
-            th:object="${client}" method="POST">
+              th:object="${client}" method="POST">
+            <div>
+                <h3>First Name</h3>
+                <input type="text" th:field="*{client_first_name}" placeholder="First Name">
+            </div>
+            <div>
+                <h3>Last Name</h3>
+                <input type="text" th:field="*{client_last_name}" placeholder="Last Name">
+            </div>
+            <div>
+                <h3>Phone Number</h3>
+                <input type="text" th:field="*{client_phone_number}" placeholder="Phone Number">
+            </div>
+            <div>
+                <h3>Email</h3>
+                <input type="text" th:field="*{client_email}" placeholder="Email">
+            </div>
 
-            <input type="text" th:field="*{client_first_name}" placeholder="First Name">
-            <input type="text" th:field="*{client_last_name}" placeholder="Last Name">
-            <input type="text" th:field="*{client_phone_number}" placeholder="Phone Number">
-            <input type="text" th:field="*{client_email}" placeholder="Email">
-            <button type="submit">Save</button>
+            <button class="myButton" type="submit" style="margin-top: 20px">Save</button>
 
         </form>
-</div>
+    </div>
 
 </div>
 </body>

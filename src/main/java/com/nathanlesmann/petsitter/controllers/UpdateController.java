@@ -54,18 +54,20 @@ public class UpdateController {
 
         clientService.updateClientById(client_id, client);
 
+        model.addAttribute("client", client);
         model.addAttribute("address", client.getAddress_id());
 
         return "update/updateAddressForm";
     }
 
-    @RequestMapping(value = "/saveAddress/{address_id}")
-    public String saveUpdatedAddress(@ModelAttribute("address") Address address, @PathVariable int address_id) {
+    @RequestMapping(value = "/saveAddress/{client_id}/{address_id}")
+    public String saveUpdatedAddress(@ModelAttribute("address") Address address, @PathVariable int address_id, @PathVariable int client_id) {
 
         assert address != null;
         addressService.updateAddressById(address_id, address);
 
-        return "redirect:/clients";
+
+        return "redirect:/clients/" + client_id;
     }
 
     @RequestMapping(value = "/updateAppointment/{appointment_id}")

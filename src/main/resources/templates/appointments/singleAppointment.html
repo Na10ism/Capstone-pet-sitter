@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link th:href="@{/css/styleSheet.css}" type="text/css" rel="stylesheet" />
+    <link th:href="@{/css/styleSheet.css}" type="text/css" rel="stylesheet"/>
     <title>Appointment</title>
 </head>
 
@@ -15,28 +15,28 @@
     <!-- Add a button -->
     <h1>Pet Sitter</h1>
     <hr>
-    <a th:href="@{/clients}"
-       class="btn btn-primary btn-sm mb-3">
-        Home
+    <a th:href="@{/clients}">Clients</a>
+    <a th:href="@{/appointments}">Appointments</a>
+    <a th:href="@{/clients/showFormForAdd}">
+        Add Client
     </a>
 
-    <a id="" th:href="@{/updateAppointment/} + ${appointment.appointment_id}"
-       class="btn btn-primary btn-sm mb-3">
-        Edit Appointment
-    </a>
-
-    <a th:href="@{/deleteAppointment/} + ${appointment.appointment_id}"
-       class="btn btn-primary btn-sm mb-3">
-        Remove Appointment
-    </a>
 
 </div>
 
 <div class="container">
+    <div class="buttonsForSingle">
+        <h1 th:text="Appointment"></h1>
+        <div class="buttons">
+            <a class="myButton" th:href="@{/updateAppointment/} + ${appointment.appointment_id}">
+                Edit Appointment
+            </a>
 
-    <h1 th:text="'Appointment:' + ' ' +
-    ${client.client_first_name} + ' ' + ${client.client_last_name}"></h1>
-
+            <a class="myButton" th:href="@{/deleteAppointment/} + ${appointment.appointment_id}">
+                Remove Appointment
+            </a>
+        </div>
+    </div>
     <hr>
 
     <div class="containerGrid">
@@ -49,8 +49,8 @@
             <h3><strong>Time</strong></h3>
             <p th:text="${appointment.time}"></p>
             <div class="noteContainer">
-            <h3><strong>Notes</strong></h3>
-            <p th:text="${appointment.notes}"></p>
+                <h3><strong>Notes</strong></h3>
+                <p th:text="${appointment.notes}"></p>
             </div>
 
         </div>
@@ -67,33 +67,40 @@
             <p th:text="${client.client_email}"></p>
         </div>
 
-        <div class="containerThree" >
+        <div class="containerThree">
             <div class="containerThreeRowOne" th:each="pet : ${pets}">
                 <h2>Address Information</h2>
-                <h3 class="inline">Street Name</h3>
-                <h3 class="inline">City</h3>
+                <h3>Street Name</h3>
                 <p th:text="${address.street_address}">
-                <p class="inline" th:text="${address.city}"></p>
+                <h3>City</h3>
+                <p th:text="${address.city}"></p>
                 <h3>State</h3>
                 <p th:text="${address.state}"></p>
-                <h3 >Zip code</h3>
+                <h3>Zip code</h3>
                 <p th:text="${address.zipcode}"></p>
 
-        </div>
+            </div>
+            <div class="containerThreeRowTwo" >
+                <h2>Pets</h2>
+                <div class="buttonsForSingle" th:each="pet : ${pets}">
+                    <div>
+                        <h3>Pet Name</h3>
+                        <p th:text="${pet.pet_name}"></p>
+                    </div>
+                    <div>
+                        <h3>Pet Type</h3>
+                        <p th:text="${pet.pet_type}"></p>
+                        <a class="myButton inline"  th:href="@{/deletePet/} + ${client.client_id} + '/' + ${pet.pet_id}">Remove Pet</a>
 
-            <div class="containerThreeRowTwo" th:each="pet : ${pets}">
-                <h3>Pet Name</h3>
-                <p th:text="${pet.pet_name}"></p>
-                <h3>Pet Type</h3>
-                <p th:text="${pet.pet_type}"></p>
+                    </div>
+                </div>
+
             </div>
         </div>
 
-        </div>
     </div>
 </div>
-
-
+</div>
 
 
 </body>

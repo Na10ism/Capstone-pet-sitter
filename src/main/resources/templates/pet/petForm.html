@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="'width=device-width, initial-scale=1">
-    <link th:href="@{/css/styleSheet.css}" type="text/css" rel="stylesheet" />
-    <title>New Pet</title>
+    <link th:href="@{/css/styleSheet.css}" type="text/css" rel="stylesheet"/>
+    <title>Add Pet</title>
 </head>
 
 <body>
@@ -20,22 +20,27 @@
     </a>
 </div>
 
+<div class="container">
+    <h1>Create Pet</h1>
+    <hr>
+    <div>
+        <h2>Pet Information</h2>
 
-<h3>Create Pet</h3>
-<hr>
+        <form action="#" th:action="@{/pets/save/} + ${client.client_id}"
+              th:object="${pet}" method="POST">
 <div>
-    <p>Pet Information</p>
-
-    <form action="#" th:action="@{/pets/save/} + ${client.client_id}"
-          th:object="${pet}" method="POST">
-
-        <input type="text" th:field="*{pet_name}" placeholder="Pet Name">
-        <input type="text" th:field="*{pet_type}" placeholder="Type">
-        <button type="submit">Add Pet</button>
-
-    </form>
+    <h3>Pet Name</h3>
+            <input type="text" th:field="*{pet_name}" placeholder="Pet Name">
 </div>
+            <div>
+                <h3>Pet Type</h3>
+            <input type="text" th:field="*{pet_type}" placeholder="Type">
+            </div>
+            <button class="myButton" type="submit" style="margin-top: 20px" >Add Pet</button>
 
+        </form>
+    </div>
+</div>
 
 </body>
 </html>
